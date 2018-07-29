@@ -48,11 +48,25 @@ def predict(test_images, label_images):
         X_img = X_img.reshape(-1, 16, 16)
 
         num += 1
+    k = 0
+    Tot = 6
+    Cols = 2
 
-    for i in range(500, 505):
-        plt.subplot(330 + (i + 1))
+    # Compute Rows required
+
+    Rows = Tot // Cols
+    Rows += Tot % Cols
+
+    # Create a Position index
+
+    Position = range(1, Tot + 1)
+    for i in xrange(500, 1100,100):
+
+        plt.subplot(Rows, Cols, Position[k])
+        k+=1
+        #plt.subplot(330 + (i + 1))
         plt.imshow(X_img[i], cmap=plt.get_cmap('gray'))
-        plt.title(label_images[i]);
+        plt.title(label_images[i],fontweight="bold",color="r");
     plt.show()
 
 
